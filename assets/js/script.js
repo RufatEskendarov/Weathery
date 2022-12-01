@@ -14,7 +14,6 @@ const searchedCityBtns = document.getElementById("searched-btn");
 const formSumbit = function (e) {
   e.preventDefault();
   let cityName = cityNameInput.value.trim();
-  console.log(cityNameInput.value);
   if (cityName) {
     getCityWeather(cityName);
     // get5Day(cityName);
@@ -45,7 +44,7 @@ const getCityWeather = function (city) {
 };
 
 const displayWeather = function (weather, searchCity) {
-  //clear old content
+  //Render Current Weather
   const html = `
     <h3 id="searched-city" class="text-warning">
       ${searchCity} (${moment(weather.dt.value).format(
@@ -64,6 +63,48 @@ const displayWeather = function (weather, searchCity) {
   `;
 
   weatherContainer.insertAdjacentHTML("afterbegin", html);
+  fetchFiveDayWeather(searchCity);
+};
+
+const fetchFiveDayWeather = function (city) {
+  var apiKey = "c41089c13b9d3a93f5373eaf06e846f3";
+  var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
+
+  fetch(apiURL).then(function (response) {
+    response.json().then(function (data) {
+      renderFiveDayWeather(data);
+    });
+  });
+};
+
+const renderFiveDayWeather = function (weather) {
+  const broadcast = weather.list;
+
+  //RENDER 5 Day Forecast
+
+  for (var i = 5; i < broadcast.length; i = i + 8) {
+    let dailyBroadcast = broadcast[i];
+    console.log(dailyBroadcast);
+
+    const html = `
+    <section class="card col-2 bg-dark card-left">
+        <ul class="text-warning info-card">
+            <li>${moment.unix(dailyBroadcast.dt).format("MMM D, YYYY")}</li>
+            <li>
+                <img
+                class="card-body"
+                src="https://openweathermap.org/img/wn/${
+                  dailyBroadcast.weather[0].icon
+                }@2x.png"
+            />
+            </li>
+            <li>Temperature: ${dailyBroadcast.main.temp} °F</li>
+            <li>Humidity: ${dailyBroadcast.main.humidity}%</li>
+        </ul>
+    </section>`;
+
+    fiveDayBrodcast.insertAdjacentHTML("beforeend", html);
+  }
 };
 
 searchSubmitBtn.addEventListener("click", formSumbit);
