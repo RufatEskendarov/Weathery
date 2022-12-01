@@ -9,10 +9,19 @@ footer {
 }
 
 h3 {
+  text-transform: capitalize;
   font-weight: bold;
   margin-left: 40px;
   margin-bottom: 0px;
   margin-top: 40px;
+}
+
+#searched-city--list {
+  text-align: center;
+}
+
+.searched-btns {
+  text-transform: capitalize;
 }
 
 .broadcast {
@@ -73,9 +82,23 @@ h3 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.info-card li :second-child {
+  margin-bottom: 0;
+}
+.card-body {
+  padding: 0;
+}
 
 .classic {
   background-color: rgb(255, 193, 7);
+}
+
+.hide {
+  display: none;
+}
+
+.corrector {
+  padding-bottom: 582px;
 }
 
 /* =============Animation for FOOTER================ */

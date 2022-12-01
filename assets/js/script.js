@@ -6,25 +6,30 @@ const cityNameInput = document.getElementById("city-name");
 const currentWeatherContainer = document.getElementById(
   "current-weather-container"
 );
-const searchedCityList = document.getElementById("searched-city");
+const container = document.getElementById("container");
+const sectionList = document.getElementById("section-city-list");
+const searchForm = document.getElementById("search-form");
+const searchedCityList = document.getElementById("searched-city--list");
 const weatherContainer = document.getElementById("current");
 const fiveDayBrodcast = document.getElementById("broadcast-container");
-const searchedCityBtns = document.getElementById("searched-btn");
+const searchedCityBtns = document.querySelectorAll(".searched-btns");
 
 const formSumbit = function (e) {
   e.preventDefault();
+  container.classList.remove("hide");
+  sectionList.classList.remove("hide");
+  searchForm.classList.remove("corrector");
   let cityName = cityNameInput.value.trim();
   if (cityName) {
     getCityWeather(cityName);
-    // get5Day(cityName);
+
     searchList.unshift({ cityName });
     cityNameInput.value = "";
   } else {
     alert("Please enter a City");
   }
-  //   saveSearchedCity();
-  //   pastSearch(cityName);
-  console.log(searchList);
+  saveSearchedCity();
+  prevSearchBtnCreator(cityName);
 };
 
 const saveSearchedCity = function () {
@@ -44,6 +49,10 @@ const getCityWeather = function (city) {
 };
 
 const displayWeather = function (weather, searchCity) {
+  //clear previous content
+  weatherContainer.innerHTML = "";
+  cityNameInput.textContent = searchCity;
+
   //Render Current Weather
   const html = `
     <h3 id="searched-city" class="text-warning">
@@ -78,13 +87,13 @@ const fetchFiveDayWeather = function (city) {
 };
 
 const renderFiveDayWeather = function (weather) {
-  const broadcast = weather.list;
+  //clear previous content
+  fiveDayBrodcast.innerHTML = "";
 
   //RENDER 5 Day Forecast
-
-  for (var i = 5; i < broadcast.length; i = i + 8) {
+  const broadcast = weather.list;
+  for (var i = 5; i < broadcast.length; i += 8) {
     let dailyBroadcast = broadcast[i];
-    console.log(dailyBroadcast);
 
     const html = `
     <section class="card col-2 bg-dark card-left">
@@ -100,11 +109,32 @@ const renderFiveDayWeather = function (weather) {
             </li>
             <li>Temperature: ${dailyBroadcast.main.temp} °F</li>
             <li>Humidity: ${dailyBroadcast.main.humidity}%</li>
+            <li>Wind speed: ${dailyBroadcast.wind.speed} MPH</li>
         </ul>
     </section>`;
+    console.log(moment.unix(dailyBroadcast.dt).format("MMM D, YYYY"));
 
     fiveDayBrodcast.insertAdjacentHTML("beforeend", html);
   }
 };
 
+const prevSearchBtnCreator = function (prevSearch) {
+  const html = `
+  <li class="searched-btns m-1 border border-secondary rounded">${prevSearch}</li>
+    `;
+  searchedCityList.insertAdjacentHTML("beforeend", html);
+};
+
+const renderPrevSearchedCity = function (event) {
+  const city = event.target;
+  console.log(city);
+  //   if (city) {
+  //     getCityWeather(city);
+  //     get5Day(city);
+  //   }
+};
+
+// pastSearch();
+
 searchSubmitBtn.addEventListener("click", formSumbit);
+// searchedCityBtns.addEventListener("click", renderPrevSearchedCity);
