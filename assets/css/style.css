@@ -11,20 +11,23 @@ footer {
 h3 {
   font-weight: bold;
   margin-left: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  margin-top: 60px;
 }
 
 .broadcast {
   margin-top: 20px;
 }
 .no-bord {
+  display: flex;
+  flex-direction: column;
   margin-left: 0;
-  margin-top: ;
+  margin-top: 0px;
 }
 
 .left {
   margin-left: -10px;
-  margin-top: 0.25rem;
+  margin-top: 0;
 }
 
 .section-cards {
@@ -42,6 +45,33 @@ h3 {
   margin-right: 20px;
   height: 20rem;
   padding: 0;
+}
+
+.info {
+  margin-top: 20px;
+  list-style: none;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.info-card {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-left: 0;
+  font-size: 22px;
+}
+.info-card li {
+  margin-bottom: 10px;
+}
+
+.info-card li:first-child {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .classic {
