@@ -42,12 +42,17 @@
               placeholder="Saint John"
               aria-label="Search"
             />
-            <button type="button" class="btn btn-outline-secondary fw-semibold">
+            <button
+              id="search-submit"
+              type="button"
+              class="btn btn-outline-secondary fw-semibold"
+            >
               Search
             </button>
           </form>
         </section>
         <section
+          id="past-search-buttons"
           class="card border border-dark bg-dark mt-1"
           style="width: 18rem; height: 35rem"
         >
@@ -62,12 +67,14 @@
           class="no-bord bg-dark rounded"
           style="width: 96rem; height: 20rem"
         >
-          <h3 class="text-warning">ggggggggggggg</h3>
+          <h3 id="searched-city"></h3>
+          <div id="current-weather-container" class="list-group"></div>
         </section>
         <section
           class="row d-flex justify-content-evenly broadcast left section-cards"
         >
-          <h3 class="text-warning">5-Day Forecast:</h3>
+          <h4 id="forecast" class="text-warning">5-Day Forecast:</h4>
+          <div class="d-flex" id="fiveday-container"></div>
           <section class="card col-2 bg-dark card-left"></section>
           <section class="card col-2 bg-dark card-right"></section>
           <section class="card col-2 bg-dark card-right"></section>
@@ -98,6 +105,13 @@
         <span>V</span>
       </h5>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap  ver. 5.1.3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+    <!-- Moment.js ver. 2.29.1 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -113,5 +127,7 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
