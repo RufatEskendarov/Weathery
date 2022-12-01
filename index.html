@@ -36,7 +36,7 @@
           </h2>
           <form class="d-flex m-2 flex-column">
             <input
-              id="city"
+              id="city-name"
               class="form-control mr-2 mb-2"
               type="search"
               placeholder="Saint John"
@@ -52,13 +52,11 @@
           </form>
         </section>
         <section
-          id="past-search-buttons"
           class="card border border-dark bg-dark mt-1"
           style="width: 18rem; height: 35rem"
         >
-          <ul class="m-1 p-1 text-warning list-unstyled">
-            <li class="m-1 ps-3 border border-secondary rounded">ass</li>
-            <li class="m-1 ps-3 border border-secondary rounded">holle</li>
+          <ul id="searched-city" class="m-1 p-1 text-warning list-unstyled">
+            <!-- <li id="searched-btn" class="m-1 ps-3 border border-secondary rounded">ass</li> -->
           </ul>
         </section>
       </section>
@@ -81,10 +79,8 @@
         <section
           class="row d-flex justify-content-evenly broadcast left section-cards"
         >
-          <h4 id="forecast" class="text-warning mt-3 mb-4 fs-2">
-            5-Day Forecast:
-          </h4>
-          <div class="d-flex" id="fiveday-container"></div>
+          <h4 class="text-warning mt-3 mb-4 fs-2">5-Day Forecast:</h4>
+          <div class="d-flex" id="broadcast-container"></div>
           <!-- <section class="card col-2 bg-dark card-left">
             <ul class="text-warning info-card">
               <li>Dec 1, 2022</li>
