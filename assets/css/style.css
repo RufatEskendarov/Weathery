@@ -22,6 +22,15 @@ h3 {
 
 .searched-btns {
   text-transform: capitalize;
+  cursor: pointer;
+}
+
+.searched-btns:hover {
+  box-shadow: 0 0 4px 0.4px rgb(255, 193, 7);
+}
+.searched-btns:active {
+  background-color: rgb(255, 193, 7);
+  box-shadow: 0 0 10px 3px rgb(255, 193, 7);
 }
 
 .broadcast {

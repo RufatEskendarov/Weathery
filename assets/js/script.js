@@ -26,7 +26,7 @@ const formSumbit = function (e) {
     searchList.unshift({ cityName });
     cityNameInput.value = "";
   } else {
-    alert("Please enter a City");
+    return;
   }
   saveSearchedCity();
   prevSearchBtnCreator(cityName);
@@ -48,6 +48,7 @@ const getCityWeather = function (city) {
   });
 };
 
+//Render Current and net 5 days weather
 const displayWeather = function (weather, searchCity) {
   //clear previous content
   weatherContainer.innerHTML = "";
@@ -75,6 +76,7 @@ const displayWeather = function (weather, searchCity) {
   fetchFiveDayWeather(searchCity);
 };
 
+//Featching data for searched city
 const fetchFiveDayWeather = function (city) {
   var apiKey = "c41089c13b9d3a93f5373eaf06e846f3";
   var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`;
@@ -86,11 +88,11 @@ const fetchFiveDayWeather = function (city) {
   });
 };
 
+//RENDER 5 Day Forecast
 const renderFiveDayWeather = function (weather) {
   //clear previous content
   fiveDayBrodcast.innerHTML = "";
 
-  //RENDER 5 Day Forecast
   const broadcast = weather.list;
   for (var i = 5; i < broadcast.length; i += 8) {
     let dailyBroadcast = broadcast[i];
@@ -112,29 +114,30 @@ const renderFiveDayWeather = function (weather) {
             <li>Wind speed: ${dailyBroadcast.wind.speed} MPH</li>
         </ul>
     </section>`;
-    console.log(moment.unix(dailyBroadcast.dt).format("MMM D, YYYY"));
 
     fiveDayBrodcast.insertAdjacentHTML("beforeend", html);
   }
 };
 
+//Creating BTNS for searched Cities
 const prevSearchBtnCreator = function (prevSearch) {
   const html = `
-  <li class="searched-btns m-1 border border-secondary rounded">${prevSearch}</li>
+  <li class="searched-btns m-1 border border-secondary rounded" data-name="${prevSearch}">${prevSearch}</li>
     `;
   searchedCityList.insertAdjacentHTML("beforeend", html);
 };
 
+//Render info for searched cities
 const renderPrevSearchedCity = function (event) {
-  const city = event.target;
-  console.log(city);
-  //   if (city) {
-  //     getCityWeather(city);
-  //     get5Day(city);
-  //   }
+  const city = event.target.getAttribute("data-name");
+
+  if (city) {
+    getCityWeather(city);
+  }
 };
 
-// pastSearch();
-
+//Handler for Search Submit button
 searchSubmitBtn.addEventListener("click", formSumbit);
-// searchedCityBtns.addEventListener("click", renderPrevSearchedCity);
+
+//Handler for previous city  rendering
+searchedCityList.addEventListener("click", renderPrevSearchedCity);
