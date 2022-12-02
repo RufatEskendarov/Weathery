@@ -6,7 +6,7 @@ This project was created to practice and improve knowledge of Bootstrap and 3rd 
 
 Repository: [repo](https://github.com/RufatEskendarov/Weathery)
 
-WebApp: [webapp](https://rufateskendarov.github.io/Event_Registrar/)
+WebApp: [webapp](https://rufateskendarov.github.io/Weathery/)
 
 ## User Story:
 
@@ -28,7 +28,7 @@ SO THAT I can plan a trip accordingly
 
 ## Installation
 
-This application does not require installation, just follow the link:[webapp](https://rufateskendarov.github.io/Event_Registrar/)
+This application does not require installation, just follow the link:[webapp](https://rufateskendarov.github.io/Weathery/v)
 
 ## Usage
 
